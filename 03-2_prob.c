@@ -47,7 +47,7 @@ void printMenu() {
 int main() {
     List list;
     nameCard * pcard;
-    printf("%lu %lu", sizeof(nameCard), sizeof(pcard));
+
     int menu;
     char tname[NAME_LEN];
     char tphone[PHONE_LEN];
