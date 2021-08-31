@@ -8,7 +8,7 @@
 #include <string.h>
 
 nameCard * makeNameCard(char * name, char * phone) {
-    nameCard * pcard = (nameCard *) malloc(sizeof(pcard));
+    nameCard * pcard = (nameCard *) malloc(sizeof(nameCard));
     strcpy(pcard->name, name);
     strcpy(pcard->phone, phone);
 
@@ -47,6 +47,7 @@ void printMenu() {
 int main() {
     List list;
     nameCard * pcard;
+    printf("%lu %lu", sizeof(nameCard), sizeof(pcard));
     int menu;
     char tname[NAME_LEN];
     char tphone[PHONE_LEN];
@@ -134,7 +135,4 @@ int main() {
                 break;
         }
     }
-
-
-    return 0;
 }
