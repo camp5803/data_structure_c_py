@@ -1,7 +1,7 @@
 #include <stdio.h> // nodeStack.c
 #include <stdlib.h>
 
-typedef char element;
+typedef int element;
 typedef struct stackNode {
     element data;
     struct stackNode *link;
@@ -32,8 +32,13 @@ void push_back(linkedStackType *s, element item) {
 
 void print_stack(linkedStackType *s) {
     for (stackNode *p = s->top; p != NULL; p = p->link)
-        printf("%c->", p->data);
+        printf("%d->", p->data);
     printf("NULL \n");
+}
+
+void print_result(linkedStackType *s) {
+    for (stackNode *p = s->top; p != NULL; p = p->link)
+        printf("%c\n", p->data);
 }
 
 element pop(linkedStackType *s) {
@@ -42,7 +47,7 @@ element pop(linkedStackType *s) {
         exit(1);
     } else {
         stackNode *temp = s->top;
-        char data = temp->data;
+        element data = temp->data;
         s->top = s->top->link;
         free(temp);
         return data;
