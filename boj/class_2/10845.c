@@ -16,12 +16,14 @@ typedef struct __ArrayList
 {
     element arr[LIST_LEN];
     int __front;
+    int curPosition;
 } ArrayList;
 
 typedef ArrayList List;
 
 void init(List* list) {
     list->__front = 0;
+    list->curPosition = 0;
 }
 
 void push(List* list, element item) {
@@ -31,22 +33,28 @@ void push(List* list, element item) {
 }
 
 int empty(List* list) {
-    if (!list->__front) {
+    if (list->curPosition == list->__front || !list->__front) {
         return true;
     } else return false;
 }
 
 element pop(List* list) {
     if(!empty(list)) {
-        return list->arr[--list->__front];
+        return list->arr[++list->curPosition - 1];
     } else return -1;
 }
 
 int size(List* list) {
-    return list->__front;
+    return list->__front - list->curPosition;
 }
 
-element top(List* list) {
+element front(List* list) {
+    if(!empty(list)) {
+        return list->arr[list->curPosition];
+    } else return -1;
+}
+
+element back(List* list) {
     if(!empty(list)) {
         return list->arr[list->__front - 1];
     } else return -1;
@@ -69,6 +77,7 @@ int main() {
         else if(!strcmp(b, "pop")) { printf("%d\n", pop(&list)); }
         else if(!strcmp(b, "size")) { printf("%d\n", size(&list));}
         else if(!strcmp(b, "empty")) { printf("%d\n", empty(&list)); }
-        else if(!strcmp(b, "top")) { printf("%d\n", top(&list)); }
+        else if(!strcmp(b, "back")) { printf("%d\n", back(&list)); }
+        else if(!strcmp(b, "front")) { printf("%d\n", front(&list)); }
     }
 }

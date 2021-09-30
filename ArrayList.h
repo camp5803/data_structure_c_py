@@ -13,7 +13,7 @@ typedef nameCard* LData;
 typedef struct __ArrayList
 {
     LData arr[LIST_LEN];
-    int numOfData;
+    int __front;
     int curPosition;
 } ArrayList;
 

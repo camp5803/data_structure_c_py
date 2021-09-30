@@ -3,25 +3,25 @@
 
 void ListInit(List * plist)
 {
-    (plist->numOfData) = 0;
+    (plist->__front) = 0;
     (plist->curPosition) = -1;
 }
 
 void LInsert(List * plist, LData data)
 {
-    if(plist->numOfData > LIST_LEN)
+    if(plist->__front > LIST_LEN)
     {
         puts("저장이 불가능합니다.");
         return;
     }
 
-    plist->arr[plist->numOfData] = data;
-    (plist->numOfData)++;
+    plist->arr[plist->__front] = data;
+    (plist->__front)++;
 }
 
 int LFirst(List * plist, LData * pdata)
 {
-    if(plist->numOfData == 0)
+    if(plist->__front == 0)
         return FALSE;
 
     (plist->curPosition) = 0;
@@ -31,7 +31,7 @@ int LFirst(List * plist, LData * pdata)
 
 int LNext(List * plist, LData * pdata)
 {
-    if(plist->curPosition >= (plist->numOfData)-1)
+    if(plist->curPosition >= (plist->__front) - 1)
         return FALSE;
 
     (plist->curPosition)++;
@@ -42,19 +42,19 @@ int LNext(List * plist, LData * pdata)
 LData LRemove(List * plist)
 {
     int rpos = plist->curPosition;
-    int num = plist->numOfData;
+    int num = plist->__front;
     int i;
     LData rdata = plist->arr[rpos];
 
     for(i=rpos; i<num-1; i++)
         plist->arr[i] = plist->arr[i+1];
 
-    (plist->numOfData)--;
+    (plist->__front)--;
     (plist->curPosition)--;
     return rdata;
 }
 
 int LCount(List * plist)
 {
-    return plist->numOfData;
+    return plist->__front;
 }

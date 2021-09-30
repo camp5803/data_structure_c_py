@@ -15,40 +15,40 @@ typedef int element;
 typedef struct __ArrayList
 {
     element arr[LIST_LEN];
-    int __front;
+    int numOfData;
 } ArrayList;
 
 typedef ArrayList List;
 
 void init(List* list) {
-    list->__front = 0;
+    list->numOfData = 0;
 }
 
 void push(List* list, element item) {
-    if (list->__front < LIST_LEN) {
-        list->arr[list->__front++] = item;
+    if (list->numOfData < LIST_LEN) {
+        list->arr[list->numOfData++] = item;
     } else exit(0);
 }
 
 int empty(List* list) {
-    if (!list->__front) {
+    if (!list->numOfData) {
         return true;
     } else return false;
 }
 
 element pop(List* list) {
     if(!empty(list)) {
-        return list->arr[--list->__front];
+        return list->arr[--list->numOfData];
     } else return -1;
 }
 
 int size(List* list) {
-    return list->__front;
+    return list->numOfData;
 }
 
 element top(List* list) {
     if(!empty(list)) {
-        return list->arr[list->__front - 1];
+        return list->arr[list->numOfData - 1];
     } else return -1;
 }
 
