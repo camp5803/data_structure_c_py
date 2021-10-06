@@ -139,7 +139,7 @@ int main() {
 
         while (true) {
             max = 0;
-            for (int cex = 0; cex < size(&d); cex++) {
+            for (int c = 0; c < size(&d); c++) {
                 if (front(&d) > max)
                     max = front(&d);
                 push_back(&d, pop_front(&d));
